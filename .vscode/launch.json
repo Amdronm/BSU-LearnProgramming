@@ -54,17 +54,18 @@
         },
         {
             "type": "java",
-            "name": "StringFormatting",
-            "request": "launch",
-            "mainClass": "StringFormatting",
-            "projectName": "BSU-LearnProgramming_940673aa"
-        },
-        {
-            "type": "java",
             "name": "SumOfRow",
             "request": "launch",
             "args": ["0.07", "0.00001"],
             "mainClass": "SumOfRow",
+            "projectName": "BSU-LearnProgramming_940673aa"
+        },
+        {
+            "type": "java",
+            "name": "StringFormatting",
+            "request": "launch",
+            "args": ["46546.6 78this 66. is 945498 a test 44.68689094093045", "78.7878 htei jilgjl7.676  .9880 88"],
+            "mainClass": "StringFormatting",
             "projectName": "BSU-LearnProgramming_940673aa"
         }
     ]
