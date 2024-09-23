@@ -2,12 +2,6 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-class MyOwnException extends Exception {
-    public MyOwnException(String message) {
-        super(message);
-    }
-}
-
 public class Matrix {
     public static void main(String[] args) {
         try {
@@ -57,16 +51,6 @@ public class Matrix {
         }
         return new double[0][0];
     }
-
-    // public static void printMatrix(double[][] matrix) {
-    //     for (int i = 0; i < matrix.length; i++) {
-    //         for (int j = 0; j < matrix[i].length; j++) {
-    //             System.out.printf("%6.2f ", matrix[i][j]);
-    //         }
-    //         System.out.println();
-    //     }
-    //     System.out.println();
-    // }
 
     public static void printVector(double[] vector) {
         for (int i = 0; i < vector.length; i++) {
