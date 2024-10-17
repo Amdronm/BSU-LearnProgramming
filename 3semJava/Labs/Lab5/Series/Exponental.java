@@ -1,3 +1,5 @@
+package Series;
+
 public class Exponental extends Series {
     public Exponental(double initElem, double q) {
         super(initElem, q);
