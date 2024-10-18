@@ -1,39 +1,32 @@
 package GraphicsInterface;
 
-import Series.*;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class MyPanel extends JPanel {
-    public MyPanel(Linear linear) {
-        setLayout(new GridLayout(2, 1));
+    private JLabel label;
+    private JTextField textField;
 
-        JTextField text = new JTextField(linear.toString());
-        text.setFont(new Font("Courier", Font.BOLD | Font.ITALIC, 20));
-        text.setHorizontalAlignment(JTextField.CENTER);
-        this.add(text);
-
-        JButton buttonChange = new JButton("Change");
-        add(buttonChange);
-        buttonChange.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                
-            }
-        });
-        // add(buttonChange);
-        // buttonChange.addActionListener(new ActionListener() {
-        //     @Override
-        //     public void actionPerformed(ActionEvent e) {
-        //         student.setAge(student.getAge() + 1);
-        //         text.setText(student.toString());
-        //     }
-        // });
+    public MyPanel() {
+        setLayout(new GridLayout(1, 2));
+        label = new JLabel();
+        label.setHorizontalAlignment(JLabel.CENTER);
+        label.setFont(new Font(Font.MONOSPACED, Font.BOLD, 23));
+        add(label);
+        textField = new JTextField(10);
+        textField.setFont(new Font(Font.DIALOG, Font.TRUETYPE_FONT, 23));
+        add(textField);
     }
-    public MyPanel(Series s) {
-        
+
+    String getText() {
+        return textField.getText();
+    }
+
+    public void setLabelText(String text) {
+        label.setText(text);
+    }
+
+    public void setFieldText(String text) {
+        textField.setText(text);
     }
 }

@@ -54,7 +54,7 @@ public abstract class Series {
     public String toString() {
         StringBuilder st = new StringBuilder();
         for (int i = 0; i < 10; i++) {
-            st.append(calculateJElement(i) + " ");
+            st.append(String.format("%.2f", calculateJElement(i)) + " ");
         }
         return st.toString();
     }
@@ -62,7 +62,7 @@ public abstract class Series {
     public String toString(int j) {
         StringBuilder st = new StringBuilder();
         for (int i = 0; i < j; i++) {
-            st.append(calculateJElement(i) + " ");
+            st.append(String.format("%.2f", calculateJElement(i)) + " ");
         }
         return st.toString();
     }
