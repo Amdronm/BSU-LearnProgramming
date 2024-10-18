@@ -2,7 +2,9 @@
    A program to print a multiplication table
 */
 
-public class MultTable {
+package MultTableV2;
+
+public class MultTable2 {
     public static void main(String[] args) {
         System.out.printf("    y | 1y | 2y | 3y | 4y | 5y %n" + 
         "  ----|----|----|----|----|----%n");
