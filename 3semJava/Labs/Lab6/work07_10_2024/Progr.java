@@ -1,3 +1,5 @@
+package work07_10_2024;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
