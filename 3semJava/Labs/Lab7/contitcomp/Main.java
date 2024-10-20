@@ -13,6 +13,6 @@ public class Main {
         MyFrame fr = new MyFrame("Toy contaner&iterator&comparator");
         fr.setDefaultCloseOperation(MyFrame.EXIT_ON_CLOSE);
         fr.setBounds(600, 300, 800, 600);
-        fr.setVisible(true);        
+        fr.setVisible(true);
     }
 }

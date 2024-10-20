@@ -41,4 +41,25 @@ public class Toy {
     public void setUpBoundAge(int upBoundAge) {
         this.upBoundAge = upBoundAge;
     }
+
+    @Override
+    public String toString() {
+        return name + ": Price=" + price + " age=[" + lowBoundAge + ", " + upBoundAge + "]";
+    }
+
+    public String toFileString() {
+        return name + " " + price + " " + lowBoundAge + " " + upBoundAge;
+    }
+
+    public void fromString(String s) throws Exception {
+        try {
+            String[] arr = s.split("[ ]+", 4);
+            this.setName(arr[0]);
+            this.setPrice(Integer.parseInt(arr[1]));
+            this.setLowBoundAge(Integer.parseInt(arr[2]));
+            this.setUpBoundAge(Integer.parseInt(arr[3]));
+        } catch (Exception e) {
+            throw new Exception("String & 3 Integers required");
+        }
+    }
 }
