@@ -56,7 +56,7 @@ public class MyFrame extends JFrame implements Iterable<Toy> {
         openButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
-                JFileChooser fileChooser = new JFileChooser(new File("3semJava\\Labs\\Lab7\\contitcomp\\"));
+                JFileChooser fileChooser = new JFileChooser(new File("3semJava/Labs/Lab7/contitcomp/"));
                 int res = fileChooser.showOpenDialog(panel1);
                 if (res == JFileChooser.APPROVE_OPTION) {
                     File file = fileChooser.getSelectedFile();
@@ -115,7 +115,7 @@ public class MyFrame extends JFrame implements Iterable<Toy> {
             @Override
             public void actionPerformed(ActionEvent ev) {
                 try {
-                    JFileChooser fileChooser = new JFileChooser(new File("3semJava\\Labs\\Lab7\\contitcomp\\"));
+                    JFileChooser fileChooser = new JFileChooser(new File("3semJava/Labs/Lab7/contitcomp/"));
                     int res = fileChooser.showOpenDialog(panel1);
                     if (res == JFileChooser.APPROVE_OPTION) {
                         File file = fileChooser.getSelectedFile();
