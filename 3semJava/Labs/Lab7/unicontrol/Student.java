@@ -9,6 +9,11 @@ public class Student extends Person implements Notifiable {
         this.login = login;
         this.email = email;
     }
+
+    @Override
+    public void notify(String message) {
+        System.out.println(this.toString() + " got:" + message);
+    }
     
     public String getEmail() {
         return email;
@@ -28,6 +33,6 @@ public class Student extends Person implements Notifiable {
 
     @Override
     public String toString() {
-        return super.toString() + " Student{login= " + login + ", " + "email=" + email + "}" + '\n';
+        return super.toString() + " Student{login= " + login + ", " + "email=" + email + "} ";
     }
 }
