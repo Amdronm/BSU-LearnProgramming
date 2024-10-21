@@ -1,48 +1,31 @@
-class Person implements Comparable<Person> {
-    String surname;
-    String name;
+package ComparaTree;
 
-    Person(String surname, String name) {
-        this.surname = surname;
-        this.name = name;
-    }
+import java.util.*;
 
-    @Override
-    public int compareTo(Person p) {
-        int comp1 = this.surname.compareTo(p.surname);
-        if (comp1 != 0) {
-            return comp1;
-        }
-        return this.name.compareTo(p.name);
-    }
-
-    @Override
-    public String toString() {
-        return "(" + surname + " " + name + ")";
-    }
-}
-
-public class BinaryTree<T extends Comparable<T>> {
-    class Node {
+public class BinTree<T> {
+    private class Node {
         T value;
         Node left;
         Node right;
+
         Node(T value) {
             this.value = value;
             left = right = null;
         }
     }
 
-    Node root;
+    private Node root;
+    private Comparator<T> comp;
 
-    BinaryTree(T value) {
-        root = new Node(value);
+    public BinTree(Comparator<T> comp) {
+        this.comp = comp;
+        this.root = null;
     }
 
-    boolean findCycle(T value) {
+    public boolean findCycle(T value) {
         Node current = root;
         while (current != null) {
-            int compare = value.compareTo(current.value);
+            int compare = comp.compare(value, current.value);
             if (compare == 0) {
                 return true;
             } else if (compare < 0) {
@@ -54,33 +37,33 @@ public class BinaryTree<T extends Comparable<T>> {
         return false;
     }
 
-    boolean find(T value) {
+    public boolean find(T value) {
         return null != find(value, root);
     }
 
-    Node find(T value, Node current) {
+    private Node find(T value, Node current) {
         if (current == null) {
             return null;
         }
-        int comp = value.compareTo(current.value);
-        if (comp < 0) {
+        int c = comp.compare(value, current.value);
+        if (c < 0) {
             return find(value, current.left);
-        } else if (comp > 0) {
+        } else if (c > 0) {
             return find(value, current.right);
         } else {
             return current;
         }
     }
 
-    void add(T value) {
+    public void add(T value) {
         root = add(value, root);
     }
 
-    Node add(T value, Node current) {
+    private Node add(T value, Node current) {
         if (current == null) {
             return new Node(value);
         }
-        if (value.compareTo(current.value) < 0) {
+        if (comp.compare(value, current.value) < 0) {
             current.left = add(value, current.left);
         } else {
             current.right = add(value, current.right);
@@ -88,18 +71,18 @@ public class BinaryTree<T extends Comparable<T>> {
         return current;
     }
 
-    void remove(T value) {
+    public void remove(T value) {
         root = remove(value, root);
     }
 
-    Node remove(T value, Node current) {
+    private Node remove(T value, Node current) {
         if (current == null) {
             return null;
         }
-        int comp = value.compareTo(current.value);
-        if (comp < 0) {
+        int c = comp.compare(value, current.value);
+        if (c < 0) {
             current.left = remove(value, current.left);
-        } else if (comp > 0) {
+        } else if (c > 0) {
             current.right = remove(value, current.right);
         } else {
             if (current.left == null && current.right == null) {
@@ -118,7 +101,7 @@ public class BinaryTree<T extends Comparable<T>> {
         return current;
     }
 
-    T getLeftestNode(Node current) {
+    private T getLeftestNode(Node current) {
         if (current.left == null) {
             return current.value;
         } else {
@@ -126,26 +109,26 @@ public class BinaryTree<T extends Comparable<T>> {
         }
     }
 
-    void printVertLR() {
+    public void printVertLR() {
         printVertLR(root);
         System.out.println();
     }
 
-    void printVertLR(Node current) {
+    private void printVertLR(Node current) {
         if (current == null) {
             return;
         }
-        printVertLR(current.left);
         System.out.print(current.value.toString() + " ");
+        printVertLR(current.left);
         printVertLR(current.right);
     }
 
-    void printLRVert() {
+    public void printLRVert() {
         printLRVert(root);
         System.out.println();
     }
 
-    void printLRVert(Node current) {
+    private void printLRVert(Node current) {
         if (current == null) {
             return;
         }
@@ -154,12 +137,12 @@ public class BinaryTree<T extends Comparable<T>> {
         System.out.print(current.value.toString() + " ");
     }
 
-    void printLVertR() {
+    public void printLVertR() {
         printLVertR(root);
         System.out.println();
     }
 
-    void printLVertR(Node current) {
+    private void printLVertR(Node current) {
         if (current == null) {
             return;
         }
@@ -169,7 +152,9 @@ public class BinaryTree<T extends Comparable<T>> {
     }
 
     public static void main(String[] args) {
-        BinaryTree<Integer> tree = new BinaryTree<Integer>(5);
+        Comparator<Integer> comp = Comparator.naturalOrder();
+        BinTree<Integer> tree = new BinTree<>(comp);
+        tree.add(5);
         tree.add(2);
         tree.add(8);
         tree.add(4);
@@ -189,18 +174,36 @@ public class BinaryTree<T extends Comparable<T>> {
         tree.remove(5);
         System.out.println("Removed 5, the root : ");
         tree.printLVertR();
-
-        BinaryTree<Person> pTree = new BinaryTree<Person>(new Person("Einstein", "Albert"));
+        BinTree<Person> pTree = new BinTree<>(new Comparator<Person>() {
+            @Override
+            public int compare(Person o1, Person o2) {
+                return o1.toString().compareTo(o2.toString());
+            }
+        });
+        pTree.add(new Person("Einstein", "Albert"));
         pTree.add(new Person("Newton", "Isaak"));
         pTree.add(new Person("Trump", "Judd"));
         pTree.add(new Person("Armstrong", "Neil"));
         System.out.println("Tree of people : ");
-        pTree.printVertLR();
+        pTree.printLVertR();
         if (pTree.find(new Person("Armstrong", "Louis"))) {
             System.out.println("Armstrong Louis is here");
         } else {
             System.out.println("Armstrong Louis is not here");
         }
         System.out.println("Armstrong Neil is " + (pTree.find(new Person("Armstrong", "Neil")) ? "" : "not ") + "here");
+
+        // Comparator<String> c = Comparator.reverseOrder();
+        // Comparator<String> c3 = (String s1, String s2) -> {return s1.length() -
+        // s2.length();};
+        // Comparator<String> c4 = (s1, s2) -> s1.length() - s2.length();
+        // Comparator<String> c5 = Comparator.comparingInt(String::length);
+        // BinTree<String> tree = new BinTree<>(c5);
+        // tree.add("Petr");
+        // tree.add("Ivan");
+        // tree.add("Ann");
+        // tree.add("Andrey");
+        // tree.add("Pasha");
+        // tree.printLVertR();
     }
 }
