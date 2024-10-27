@@ -1,0 +1,6 @@
+Mathematical modeling:
+Undergraduate(Person=[Ann] Student{login= pr3, email=ann@mail} Academic=[Cay Horstmann])
+Postgraduate(Person=[Ben] Student{login= te2, email=Ben@mail} Academic=[Paul Deitel])
+Undergraduate(Person=[Max] Student{login= gg4, email=max@mail} Academic=[Paul Deitel])
+Postgraduate(Person=[Sam] Student{login= jj8, email=sam@mail} Academic=[Cay Horstmann])
+Postgraduate(Person=[Tom] Student{login= yj34, email=tom@mail} Academic=[Cay Horstmann])
