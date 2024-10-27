@@ -3,6 +3,7 @@ package examplekr;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
+import java.util.function.Function;
 
 public class Data <T extends Comparable<T>> {
     private Set<T> data;
@@ -15,10 +16,11 @@ public class Data <T extends Comparable<T>> {
         this.data = set;
     }
 
-    public void parseFromFile(File file) throws Exception {
+    public void parseFromFile(File file, Function<String, T> parse) throws Exception {
         try (Scanner in = new Scanner(file)) {
             while (in.hasNext()) {
-                // T t = in.next();
+                T t = parse.apply(in.next());
+                data.add(t);
             }
         } catch (FileNotFoundException e) {
             throw new Exception("No such file!");
