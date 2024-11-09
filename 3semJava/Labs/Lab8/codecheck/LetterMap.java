@@ -5,7 +5,6 @@ import java.util.*;
 public class LetterMap {
     public Map<String, Integer> makeLetterMap(String str)
    {
-      // TODO: Complete method
       Map<String, Integer> map = new TreeMap<>();
       for (int i = 0; i < str.length(); i++) {
         String s = String.valueOf(str.charAt(i));

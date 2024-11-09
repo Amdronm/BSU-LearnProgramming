@@ -34,8 +34,6 @@ public static boolean check(String [] names, String name)
    a constructor and the toString  method override
 */
 
-// TODO: implement the Comparable interface parameterized for the Person class 
-// to enable class to be used as an element in the TreeSet class
 
 static class Person implements Comparable<Person>
 {
@@ -60,7 +58,6 @@ static class Person implements Comparable<Person>
      return name.equals(p.name);
    }
 
-   // TODO: implement the method required in the Comparable interface here
 
    @Override
    public int compareTo(Person o) {

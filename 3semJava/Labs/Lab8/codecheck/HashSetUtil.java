@@ -49,14 +49,12 @@ static class Person
      return ln + ", " + fn;
    }
 
-   // TODO: wite a hashcode override method
    @Override
    public int hashCode()
    {
     return fn.hashCode() << 1 ^ ln.hashCode();
    }
 
-   // TODO: wite an equals override method
    @Override
    public boolean equals(Object object)
    {

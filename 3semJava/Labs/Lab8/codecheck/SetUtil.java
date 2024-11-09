@@ -13,7 +13,6 @@ public class SetUtil
 {
 
    public static String check(String str) {
-      // TODO Create a stack of Character elements, caled stack,  with all possible vowels
 
       Set<Character> stack = new HashSet<>();
       stack.addAll(Arrays.asList(new Character[] {'a', 'e', 'u', 'i', 'o', 'A', 'U', 'I', 'O', 'E'}));
@@ -27,7 +26,6 @@ public class SetUtil
 
 	 for (int i = 0; i < str.length(); i++)
      {
-        // TODO: if a string char is in the set do nothing, otherwise append it
         // to the stringbuffer, sb
         Character character = str.charAt(i);
         if (!set.contains(character)) {
