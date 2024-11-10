@@ -1,6 +1,6 @@
 package sweets;
 
-public class Chocolate extends Candy {
+public class Chocolate extends Sweet {
     private Type type;
     private boolean hasFilling;
 

@@ -1,12 +1,12 @@
 package sweets;
 
-public class Candy {
+public class Sweet {
     private String name;
     private double sugar;
     private double weight;
     private double price;
 
-    public Candy(String name, double sugar, double weight, double price) {
+    public Sweet(String name, double sugar, double weight, double price) {
         this.name = name;
         this.sugar = sugar;
         this.weight = weight;
