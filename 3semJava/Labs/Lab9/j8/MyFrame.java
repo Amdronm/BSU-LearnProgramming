@@ -1,14 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-
-import javax.imageio.ImageIO;
 
 public class MyFrame extends JFrame {
-    private JPanel drawPanel;
-    private Color penColor = Color.RED;
+    private DrawingPane drawPanel;
+    private JPanel colorPanel;
     private BufferedImage image;
     private Graphics2D g2d;
 
@@ -21,34 +17,19 @@ public class MyFrame extends JFrame {
         g2d.setColor(Color.WHITE);
         g2d.fillRect(0, 0, image.getWidth(), image.getHeight());
 
-        drawPanel = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                g.drawImage(image, 0, 0, null);
-            }
-        };
-        drawPanel.setPreferredSize(new Dimension(1600, 1200));
-        drawPanel.addMouseMotionListener(new MouseMotionAdapter() {
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                g2d.setColor(penColor);
-                g2d.fillOval(e.getX(), e.getY(), 10, 10);
-                drawPanel.repaint();
-            }
-        });
+        drawPanel = new DrawingPane(image);
 
         JScrollPane scrollPane = new JScrollPane(drawPanel);
         scrollPane.setPreferredSize(new Dimension(800, 600));
 
-        JPanel colorPanel = new JPanel();
+        colorPanel = new JPanel();
         JButton redButton = new JButton("Red");
         JButton greenButton = new JButton("Green");
         JButton blueButton = new JButton("Blue");
 
-        redButton.addActionListener(e -> penColor = Color.RED);
-        greenButton.addActionListener(e -> penColor = Color.GREEN);
-        blueButton.addActionListener(e -> penColor = Color.BLUE);
+        redButton.addActionListener(e -> drawPanel.setColor(Color.RED));
+        greenButton.addActionListener(e -> drawPanel.setColor(Color.GREEN));
+        blueButton.addActionListener(e -> drawPanel.setColor(Color.BLUE));
 
         colorPanel.add(redButton);
         colorPanel.add(greenButton);
@@ -68,35 +49,11 @@ public class MyFrame extends JFrame {
     }
 
     private void saveImage() {
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new File("3semJava/Labs/Lab9/j8"));
-        if (fileChooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
-            File file = fileChooser.getSelectedFile();
-            try {
-                ImageIO.write(image, "png", file);
-            } catch (IllegalArgumentException ex) {
-                JOptionPane.showMessageDialog(this, "File error: " + ex.getMessage());
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
-            }
-        }
+        drawPanel.saveImage();
     }
 
     private void openImage() {
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new File("3semJava/Labs/Lab9/j8"));
-        if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-            File file = fileChooser.getSelectedFile();
-            try {
-                image = ImageIO.read(file);
-                g2d = image.createGraphics();
-                drawPanel.repaint();
-            } catch (IllegalArgumentException ex) {
-                JOptionPane.showMessageDialog(this, "File error: " + ex.getMessage());
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
-            }
-        }
+        drawPanel.openImage();
     }
 
     public static void main(String[] args) {
