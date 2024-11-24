@@ -32,7 +32,7 @@ public class Iterator<T> {
     }
 
     public boolean isDone() {
-        return current == list.size() || current == -1;
+        return current >= list.size() || current < 0;
     }
 
     public T getCurrent() {
