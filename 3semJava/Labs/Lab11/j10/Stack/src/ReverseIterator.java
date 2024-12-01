@@ -1,28 +1,28 @@
 import java.util.List;
 import java.util.Objects;
 
-public class Iterator<T> implements iIterator<T> {
+public class ReverseIterator<T> implements iIterator<T> {
     private final List<T> list;
     private int current;
 
-    public Iterator(List<T> list) {
+    public ReverseIterator(List<T> list) {
         this.list = list;
-        this.current = 0;
+        this.current = list.size() - 1;
     }
 
     @Override
     public void first() {
-        current = 0;
+        current = list.size() - 1;
     }
 
     @Override
     public void next() {
-        current++;
+        current--;
     }
 
     @Override
     public boolean isDone() {
-        return current >= list.size();
+        return current < 0;
     }
 
     @Override
@@ -33,8 +33,8 @@ public class Iterator<T> implements iIterator<T> {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Iterator<?> iterator = (Iterator<?>) o;
-        return current == iterator.current && Objects.equals(list, iterator.list);
+        ReverseIterator<?> that = (ReverseIterator<?>) o;
+        return current == that.current && Objects.equals(list, that.list);
     }
 
     @Override

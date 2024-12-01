@@ -3,7 +3,7 @@ import java.util.Objects;
 import java.util.List;
 
 public class Stack<T> {
-    private final List<T> data;
+    private List<T> data;
 
     public Stack() {
         data = new ArrayList<>();
@@ -66,11 +66,11 @@ public class Stack<T> {
         data.addAll(list);
     }
 
-    public Iterator<T> getBaseIterator() {
-        return new Iterator<>(data, 0);
+    public Iterator<T> getIterator() {
+        return new Iterator<>(data);
     }
 
-    public Iterator<T> getEndIterator() {
-        return new Iterator<>(data, data.size());
+    public ReverseIterator<T> getReverseIterator() {
+        return new ReverseIterator<>(data);
     }
 }
