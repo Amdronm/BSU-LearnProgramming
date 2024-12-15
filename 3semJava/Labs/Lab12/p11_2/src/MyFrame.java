@@ -21,12 +21,17 @@ public class MyFrame extends JFrame implements Iterable<Toy> {
     private JTextArea inArea;
     private JTextArea outArea;
 
+    private Strategy strategy;
+
     MyFrame(String title) {
         super(title);
         Font font = new Font(Font.SANS_SERIF, Font.PLAIN, 19);
         toys = new TreeSet<>(new ToyComparator());
         lowBound = 0;
         upBound = 100;
+
+        strategy = new ParserToysNoStream();
+//        strategy = new ParserToyStream();
         
         setLayout(new BorderLayout(0, 10));
 
@@ -57,10 +62,7 @@ public class MyFrame extends JFrame implements Iterable<Toy> {
                     File file = fileChooser.getSelectedFile();
                     try {
                         in = new Scanner(file);
-//                        ParserToysNoStream pn = new ParserToysNoStream();
-//                        toys = pn.parseToys(in);
-                        ParserToyStream ps = new ParserToyStream();
-                        toys = ps.parseToys(in);
+                        toys = strategy.parseToys(in);
                         printToys(inArea);
                         printToys(outArea);
                     } catch (Exception e) {
