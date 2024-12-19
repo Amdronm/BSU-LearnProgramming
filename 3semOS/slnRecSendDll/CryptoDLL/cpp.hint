@@ -1,0 +1,2 @@
+#define CRYPTODLL_API __declspec(dllexport)
+#define CRYPTODLL_API __declspec(dllimport)

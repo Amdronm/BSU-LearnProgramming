@@ -1,0 +1,20 @@
+<toys>
+    <toy>
+        <name>Teddy</name>
+        <price>100</price>
+        <lba>0</lba>
+        <uba>20</uba>
+    </toy>
+    <toy>
+        <name>Ralph</name>
+        <price>200</price>
+        <lba>6</lba>
+        <uba>30</uba>
+    </toy>
+    <toy>
+        <name>Buzz</name>
+        <price>50</price>
+        <lba>12</lba>
+        <uba>60</uba>
+    </toy>
+</toys>
