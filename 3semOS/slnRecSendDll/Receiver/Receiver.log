@@ -1,0 +1,13 @@
+
+DLL loaded
+Created Named Pipe
+Created sync event
+
+DLL loaded
+Created Named Pipe
+Created sync event
+Now we are reading file
+we got message: message_to_send
+Now we are reading file
+we got message: terminate
+Now we are reading file
