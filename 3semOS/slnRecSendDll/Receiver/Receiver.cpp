@@ -38,6 +38,7 @@ int main() {
     HINSTANCE hLib = LoadLibraryA("CryptoDLL.dll");
     if (!hLib) {
         printf("cannot load DLL %d\n", GetLastError());
+        system("pause");
         return 1;
     }
 
