@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10.0)
 project(strings VERSION 0.1.0 LANGUAGES C CXX)
 
-add_executable(strings suf_arr.cpp)
+add_executable(strings cycle-shift.cpp)
 

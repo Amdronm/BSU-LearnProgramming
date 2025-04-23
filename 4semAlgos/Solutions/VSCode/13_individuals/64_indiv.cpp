@@ -1,3 +1,8 @@
+/*
+Dynamic programming
+Pokemon task
+*/
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
