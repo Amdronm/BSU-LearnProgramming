@@ -1,0 +1,6 @@
+/.cache
+/build/*
+
+!/build/*.txt
+!/build/*.py
+/build/CMakeCache.txt
